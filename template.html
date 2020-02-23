@@ -1,0 +1,209 @@
+<html>
+    <head>
+        <style>
+            * {
+              box-sizing: border-box;
+              
+            }
+            
+            /* Create two equal columns that floats next to each other */
+            .column {
+              float: left;
+              width: 33.333%;
+              height: 150px; /* Should be removed. Only for demonstration */
+              border: 1px solid black;
+            }
+            .colum{
+                float: left;
+              width: 50%;
+              height: 75px; /* Should be removed. Only for demonstration */
+              border: 1px solid black;  
+            }
+            .col{
+                float: left;
+              width: 33.3333%;
+              height: 400px; /* Should be removed. Only for demonstration */
+              border: 1px solid black;      
+            }
+            .cl{
+                float: left;
+              width: 50%;
+              height: 400px; /* Should be removed. Only for demonstration */
+              border: 1px solid black;      
+            }
+            .c{
+                float: left;
+              width: 33.3333%;
+              height: 50px; /* Should be removed. Only for demonstration */
+              border: 1px solid black;          
+            }
+            .cont{
+                float: left;
+              width: 100%;
+              height: 50px; /* Should be removed. Only for demonstration */
+              border: 1px solid black;   
+            }
+            .cli{
+                float: left;
+              width: 16.66666%;
+              height: 50px; /* Should be removed. Only for demonstration */
+              border: 1px solid black;
+            }
+            .con{
+                float: left;
+              width: 100%;
+              height: 50px; 
+            }
+            /* Clear floats after the columns */
+            .row:after {
+              content: "";
+              display: table;
+              clear: both;
+            }
+
+            </style>
+            
+    </head>
+    <body>
+        <div>
+            <!-- <center>  -->
+            <div style="border: 1px solid black; height: 850px; width: 842px;">
+                <div class="cont">
+                    <center><h3>Tax Invoice</h3></center>
+                </div>
+                <!-- <div class="row"> -->
+                    <div class="row">
+                        <div class="column"><center><br/>
+                      <b>  SELLER:</b><br/>
+                        {{sellerName}}<br/>
+                        Address : {{sellerAddress}}<br/>
+                        GST no. : {{sellerGSTINNO}}
+                      </center>
+                        </div>
+                        <div class="column"><center><br/>
+                            <b>BUYER:</b><br/>
+                            {{buyerName}}<br/>
+                            Address : {{buyerAddress}}<br/>
+                            GST no. : {{buyerGST}}
+                      </center>
+                        </div>
+                        <div class="column">
+                            <div class="row">
+                                <div class="colum">
+                                    <br/><center>Invoice No.</center></div>
+                                <div class="colum">
+                                    <br/><center>Dated</center>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="colum"><br/><center><b>{{invoice}}</b></center></div>
+                                <div class="colum"><br/><center>{{invoiceDate}}</center>
+                              </div>
+                            </div>
+                        </div>
+                        <!-- <div class="cont"> -->
+                            <div class="row">
+                                <div class="c"> 
+                                    <br/><center>Description of Goods</center>
+                                </div>
+                                <div class="c">
+                                    <div class="row">
+                                        <div class="col"><br/><center>HSN/SAC</center></div>
+                                        <div class="col"><br/><center>GST %</center></div>
+                                        <div class="col"><br/><center>Quantity</center></div>
+                                    </div>
+                                </div>
+                                <div class="c">
+                                    <div class="row">
+                                        <div class="cl"><br/><center>Rate</center></div>
+                                        <div class="cl"><br/><center>Amount</center></div>
+                                    </div>
+                   </div>   
+                   </div>     
+                        <!-- </div> -->
+                        <div class="row">
+                            <div class="col"><br/>
+                             <center>{{productName}}</center>
+                            </div>
+                            <div class="col">
+                                <div class="row">
+                                    <div class="col"><br/><center>{{productHsn}}</center>
+                                      <br/>
+                                      <br/>
+                                      <br/>
+                                      <br/>
+                                      <br/>
+                                      <br/>
+                                      <br/>
+                                      <br/>
+                                      <br/>
+                                      <br/>
+                                      <br/>
+                                      <br/>
+                                      <br/>
+                                      <br/>
+                                      <br/>
+                                      <br/>
+                                    <p style="text-align-last:center;">Total</p>
+                                    </div>
+                                    <div class="col"><br/><center>{{productGst}} %</center></div>
+                                    <div class="col"><br/><center>{{productQuantity}}</center></div>
+                                </div>
+                            </div>
+                         <div class="col">
+                            <div class="row">
+                                <div class="cl"><br/><center>{{productRate}}</center></div>
+                                
+                                <div class="cl"><br/><center>{{total}}</center>
+                                <br/>
+                                      <br/>
+                                      <br/>
+                                      <br/>
+                                      <br/>
+                                      <br/>
+                                      <br/>
+                                      <br/>
+                                      <br/>
+                                      <br/>
+                                      <br/>
+                                      <br/>
+                                      <br/>
+                                      <br/>
+                                      <br/>
+                                      <br/>
+                                    <p style="text-align-last:center;"><b>{{total}}</b></p>
+                                  </div>
+                              </div>
+                         </div>
+                      </div>
+                      <div class="row">
+                        <div class="cli"><br/><center><b>HSN/SAC</b></center></div>
+  
+                        <div class="cli"><br/><center><b>CGST Rate %</b></center></div>
+                        <div class="cli"><br/><center><b>CGST Amount</b></center></div>
+                        <div class="cli"><br/><center><b>SGST Rate %</b></center></div>
+                        <div class="cli"><br/><center><b>SGST Amount</b></center></div>
+                        <div class="cli"><br/><center><b>Total</b></center></div>
+                                
+                      </div>
+                      <div class="row">
+                        <div class="cli"><br/><center><b>{{productHsn}}</b></center></div>
+      
+                        <div class="cli"><br/><center><b>{{productCGst}} %</b></center></div>
+                        <div class="cli"><br/><center><b>{{productCGstA}}</b></center></div>
+                        <div class="cli"><br/><center><b>{{productSGst}} %</b></center></div>
+                        <div class="cli"><br/><center><b>{{productSGstA}}</b></center></div>
+                        <div class="cli"><br/><center><b>{{total}}</b></center></div>
+                                
+                      </div>
+                       <div class="con"> </div>    
+                    <div class="con">
+                        <p style="text-align: right;">Authorized Signature</p>
+                    </div>
+                       <!-- </div> -->
+            </div>
+            <center>This is computer generated invoice</center>
+        <!-- </center> -->
+        </div>
+    </body>
+</html>
