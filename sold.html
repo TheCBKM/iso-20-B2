@@ -12,11 +12,20 @@
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
     <title>Sold</title>
+    <script>
+        function language(){
+          setStorage("lang",(
+            getStorage("lang")=='1'?"0":"1"
+          ))
+          location.reload(true)
+        }
+      </script>
 </head>
 
 <body onload="start()">
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand" href="#"><script>document.write(getStorage("user").name)</script></a>
+        <a class="navbar-brand" href="#">
+            <script>document.write(getStorage("user").name)</script></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
             aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -24,22 +33,40 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
                 <li class="nav-item active">
-                   <script>document.write(getStorage("user").role=="Manufacturer"?`<a class="nav-link" href="manuproduct.html">Add Product <span class="sr-only">(current)</span></a>`:`<a class="nav-link" href="sold.html">Sell Product <span class="sr-only">(current)</span></a>`)</script> 
+                    <script>document.write(getStorage("user").role == "Manufacturer" ? getStorage("lang")=='1'?`<a class="nav-link" href="manuproduct.html">उत्पाद जोड़ें <span class="sr-only">(current)</span></a>`:`<a class="nav-link" href="manuproduct.html">Add Products <span class="sr-only">(current)</span></a>` : getStorage("lang")=='1'?`<a class="nav-link" href="sold.html">उत्पाद बेचना हैं <span class="sr-only">(current)</span></a>`:`<a class="nav-link" href="sold.html">Sell Product <span class="sr-only">(current)</span></a>`)</script>
                 </li>
                 <li class="nav-item active">
-                    <a class="nav-link" href="alltx.html">All Transaction</a>
-                </li>              
+                    <a class="nav-link" href="alltx.html"><script>
+                        document.write(getStorage("lang")=='1'?"सभी लेन-देन":"All Transactions")
+                        
+                            </script></a>
+                </li>
                 <li class="nav-item active">
-                    <a class="nav-link" href="viewRebate.html">Rebate</a>
+                    <a class="nav-link" href="viewRebate.html"><script>
+                        document.write(getStorage("lang")=='1'?"छूट":"Rebate")
+                        
+                            </script></a>
                 </li>
             </ul>
         </div>
-        <a style=" color: white;" onclick="logout()" target="_blank">Logout</a>
+        <a style=" color: white;" target="_blank"><button class="btn btn-secondary"  onclick="language()"><script>
+            document.write(getStorage("lang")=='1'?"English":"Hindi")
+            
+                </script></button>
+          </a>
+        <a style=" color: white;" onclick="logout()" target="_blank"><script>
+            document.write(getStorage("lang")=='1'?"लॉग आउट":"Logout")
+            
+                </script></a>
 
     </nav>
+
     <div class="container">
         <center>
-            <h1>Sell</h1>
+            <h1><script>
+                document.write(getStorage("lang")=='1'?"अपना उत्पाद बेचो":"Sell")
+                
+                    </script></h1>
         </center>
         <br />
         <br />
@@ -59,12 +86,30 @@
                     <thead>
                         <tr>
                             <th scope="col">#</th>
-                            <th scope="col">Product</th>
-                            <th scope="col">IGST</th>
-                            <th scope="col">Total Price Rate</th>
-                            <th scope="col">Quantity</th>
-                            <th scope="col">Sell</th>
-                            <th scope="col">Track</th>
+                            <th scope="col"><script>
+                                document.write(getStorage("lang")=='1'?"उत्पाद":"Product")
+                                
+                                    </script></th>
+                            <th scope="col"><script>
+                                document.write(getStorage("lang")=='1'?"igst":"IGST")
+                                
+                                    </script></th>
+                            <th scope="col"><script>
+                                document.write(getStorage("lang")=='1'?"कुल मूल्य दर":"Total Price Rate")
+                                
+                                    </script></th>
+                            <th scope="col"><script>
+                                document.write(getStorage("lang")=='1'?"मात्रा":"Quantity")
+                                
+                                    </script></th>
+                            <th scope="col"><script>
+                                document.write(getStorage("lang")=='1'?"अपना उत्पाद बेचो":"Sell")
+                                
+                                    </script></th>
+                            <th scope="col"><script>
+                                document.write(getStorage("lang")=='1'?"ट्रैक उत्पाद":"Track")
+                                
+                                    </script></th>
                         </tr>
                     </thead>
                     <tbody id="display">

@@ -14,18 +14,39 @@
   <link rel="stylesheet" href="load.css" />
   <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="util.js"></script>
+    <script>
+      function language(){
+        setStorage("lang",(
+          getStorage("lang")=='1'?"0":"1"
+        ))
+        location.reload(true)
+      }
+    </script>
 </head>
 
 <body>
   <nav class="navbar navbar-expand-lg navbar-light justify-content-between" style="background-color: black;;">
-    <a class=" navbar-brand" href="#" style="color:white;">GTST<br>
+    
+    <a class=" navbar-brand" href="#" style="color:white;"><script>
+      document.write(getStorage("lang")=='1'?"जीएसटी":"GST")
+      
+          </script>
+          
+          <br>
       <!-- <div style="font-size: small;">OOAD</div> -->
     </a>
-    
+    <a style=" color: white;" target="_blank"><button class="btn btn-secondary"  onclick="language()"><script>
+      document.write(getStorage("lang")=='1'?"English":"Hindi")
+      
+          </script></button>
+    </a>
   </nav>
   <div class="container">
     <center>
-      <h1>LOG IN</h1>
+      <h1><script>
+        document.write(getStorage("lang")=='1'?"लॉग इन करें":"LOG IN")
+        
+            </script></h1>
     </center>
     <br />
     <br />
@@ -33,16 +54,28 @@
       <div class="shadow p-3 mb-5 bg-white rounded" style="width: 500px; height: 300px;">
 
         <div class="form-group" style="font-size:20px;">
-          <label for="inputAddress">GST No.</label>
+          <label for="inputAddress"><script>
+            document.write(getStorage("lang")=='1'?"जीएसटी संख्या":"GST No.")
+            
+                </script></label>
           <input type="text" class="form-control" id="gst" placeholder="Enter your Gst no.">
         </div>
         <div class="form-group ">
-          <label for="inputPassword4" style="font-size:20px;">Password</label>
+          <label for="inputPassword4" style="font-size:20px;"><script>
+            document.write(getStorage("lang")=='1'?"अपना पासवर्ड डालें":"Password")
+            
+                </script></label>
           <input type="password" class="form-control" id="inputPassword" placeholder="Enter password">
         </div>
-        <center><button onclick="login()" class="btn btn-danger">Login</button></center>
+        <center><button onclick="login()" class="btn btn-danger"><script>
+          document.write(getStorage("lang")=='1'?"लॉग इन करें":"Login")
+          
+              </script></button></center>
         <div id="load"></div>
-        <center><b><a href="signup.html">REGISTER >></a></b></center>
+        <center><b><a href="signup.html"><script>
+          document.write(getStorage("lang")=='1'?"खुद को रजिस्टर करें":"REGISTER >>")
+          
+              </script></a></b></center>
 
       </div>
     </div>

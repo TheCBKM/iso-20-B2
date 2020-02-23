@@ -13,6 +13,15 @@
     <link rel="stylesheet" href="load.css" />
 
     <title>All TX</title>
+
+    <script>
+        function language(){
+          setStorage("lang",(
+            getStorage("lang")=='1'?"0":"1"
+          ))
+          location.reload(true)
+        }
+      </script>
 </head>
 
 <body>
@@ -26,23 +35,40 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
                 <li class="nav-item active">
-                    <script>document.write(getStorage("user").role == "Manufacturer" ? `<a class="nav-link" href="manuproduct.html">Add Product <span class="sr-only">(current)</span></a>` : `<a class="nav-link" href="sold.html">Sell Product <span class="sr-only">(current)</span></a>`)</script>
+                    <script>document.write(getStorage("user").role == "Manufacturer" ? getStorage("lang")=='1'?`<a class="nav-link" href="manuproduct.html">उत्पाद जोड़ें <span class="sr-only">(current)</span></a>`:`<a class="nav-link" href="manuproduct.html">Add Products <span class="sr-only">(current)</span></a>` : getStorage("lang")=='1'?`<a class="nav-link" href="sold.html">उत्पाद बेचना हैं <span class="sr-only">(current)</span></a>`:`<a class="nav-link" href="sold.html">Sell Product <span class="sr-only">(current)</span></a>`)</script>
                 </li>
                 <li class="nav-item active">
-                    <a class="nav-link" href="alltx.html">All Transaction</a>
+                    <a class="nav-link" href="alltx.html"><script>
+                        document.write(getStorage("lang")=='1'?"सभी लेन-देन":"All Transactions")
+                        
+                            </script></a>
                 </li>
                 <li class="nav-item active">
-                    <a class="nav-link" href="viewRebate.html">Rebate</a>
+                    <a class="nav-link" href="viewRebate.html"><script>
+                        document.write(getStorage("lang")=='1'?"छूट":"Rebate")
+                        
+                            </script></a>
                 </li>
             </ul>
         </div>
-        <a style=" color: white;" onclick="logout()" target="_blank">Logout</a>
+        <a style=" color: white;" target="_blank"><button class="btn btn-secondary"  onclick="language()"><script>
+            document.write(getStorage("lang")=='1'?"English":"Hindi")
+            
+                </script></button>
+          </a>
+        <a style=" color: white;" onclick="logout()" target="_blank"><script>
+            document.write(getStorage("lang")=='1'?"लॉग आउट":"Logout")
+            
+                </script></a>
 
     </nav>
 
     <div class="container">
         <center>
-            <h1>Transactions</h1>
+            <h1><script>
+                document.write(getStorage("lang")=='1'?"लेन-देन":"Transactions")
+                
+                    </script></h1>
         </center>
         <br />
         <br />
@@ -57,12 +83,30 @@
                     <thead>
                         <tr>
                             <th scope="col">#</th>
-                            <th scope="col">Product</th>
-                            <th scope="col">From</th>
-                            <th scope="col">To</th>
-                            <th scope="col">Amount/unit</th>
-                            <th scope="col">Quantity</th>
-                            <td>Track</td>
+                            <th scope="col"><script>
+                                document.write(getStorage("lang")=='1'?"उत्पाद":"Product")
+                                
+                                    </script></th>
+                            <th scope="col"><script>
+                                document.write(getStorage("lang")=='1'?"विक्रेता से":"From")
+                                
+                                    </script></th>
+                            <th scope="col"><script>
+                                document.write(getStorage("lang")=='1'?"खरीदार ":"To")
+                                
+                                    </script></th>
+                            <th scope="col"><script>
+                                document.write(getStorage("lang")=='1'?"प्रति यूनिट राशि":"Amount/unit")
+                                
+                                    </script></th>
+                            <th scope="col"><script>
+                                document.write(getStorage("lang")=='1'?"मात्रा":"Quantity")
+                                
+                                    </script></th>
+                            <th scope="col"><script>
+                                document.write(getStorage("lang")=='1'?"ट्रैक उत्पाद":"Track")
+                                
+                                    </script></th>
 
                         </tr>
                     </thead>

@@ -12,6 +12,14 @@
     integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
   <title></title>
+  <script>
+    function language(){
+      setStorage("lang",(
+        getStorage("lang")=='1'?"0":"1"
+      ))
+      location.reload(true)
+    }
+  </script>
 </head>
 
 <body>
@@ -19,25 +27,43 @@
     <a class=" navbar-brand" href="#" style="color:white;">GTST<br>
       <!-- <div style="font-size: small;">OOAD</div> -->
     </a>
+    <a style=" color: white;" target="_blank"><button class="btn btn-secondary"  onclick="language()"><script>
+      document.write(getStorage("lang")=='1'?"English":"Hindi")
+      
+          </script></button>
+    </a>
+ 
   </nav>
   <div class="container">
     <center>
-      <h1>SIGN UP</h1>
+      <h1><script>
+        document.write(getStorage("lang")=='1'?"साइन अप करें":"SIGN UP")
+        
+            </script></h1>
     </center>
     <br />
     <br />
     <div class="d-flex justify-content-center">
       <div class="shadow p-3 mb-5 bg-white rounded" style="width:500px;">
         <div class="form-group">
-          <label for="inputAddress" style="font-size:20px;">Name</label>
+          <label for="inputAddress" style="font-size:20px;"><script>
+            document.write(getStorage("lang")=='1'?"नाम":"Name")
+            
+                </script></label>
           <input type="text" class="form-control" id="uname" placeholder="Your Name">
         </div>
         <div class="form-group">
-          <label for="inputAddress" style="font-size:20px;">GST No.</label>
+          <label for="inputAddress" style="font-size:20px;"><script>
+            document.write(getStorage("lang")=='1'?"जीएसटी नंबर":"GST No.")
+            
+                </script></label>
           <input type="text" class="form-control" id="gst" placeholder="Enter your Gst no.">
         </div>
         <div class="form-group ">
-          <label for="inputState" style="font-size:20px;">Role</label>
+          <label for="inputState" style="font-size:20px;"><script>
+            document.write(getStorage("lang")=='1'?"भूमिका":"Role")
+            
+                </script></label>
           <select id="role" class="form-control">
             <option selected>Choose</option>
             <option>Manufacturer</option>
@@ -46,16 +72,28 @@
           </select>
         </div>
         <div class="form-group ">
-          <label for="inputPassword4" style="font-size:20px;">Address</label>
+          <label for="inputPassword4" style="font-size:20px;"><script>
+            document.write(getStorage("lang")=='1'?"पता":"Address")
+            
+                </script></label>
           <input type="text" class="form-control" id="address">
         </div>
         <div class="form-group ">
-          <label for="inputPassword4" style="font-size:20px;">Password</label>
+          <label for="inputPassword4" style="font-size:20px;"><script>
+            document.write(getStorage("lang")=='1'?"पास वर्ड दर्ज करें":"Password")
+            
+                </script></label>
           <input type="password" class="form-control" id="password">
         </div>
 
-        <center><button onclick="register()" class="btn btn-danger">Register</button></center>
-        <center><b><a href="index.html">LOGIN >></a></b></center>
+        <center><button onclick="register()" class="btn btn-danger"><script>
+          document.write(getStorage("lang")=='1'?"रजिस्टर करें":"Register")
+          
+              </script></button></center>
+        <center><b><a href="index.html"><script>
+          document.write(getStorage("lang")=='1'?"लॉग इन करें":"LOGIN >>")
+          
+              </script></a></b></center>
       </div>
     </div>
   </div>

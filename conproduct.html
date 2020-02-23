@@ -13,6 +13,15 @@
         <link rel="stylesheet" href="load.css" />
 
     <title></title>
+    <script>
+        function language(){
+          setStorage("lang",(
+            getStorage("lang")=='1'?"0":"1"
+          ))
+          location.reload(true)
+        }
+      </script>
+
 </head>
 
 <body onload="start()">
@@ -26,23 +35,38 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
                 <li class="nav-item active">
-                    <script>document.write(getStorage("user").role == "Manufacturer" ? `<a class="nav-link" href="manuproduct.html">Add Product <span class="sr-only">(current)</span></a>` : `<a class="nav-link" href="sold.html">Sell Product <span class="sr-only">(current)</span></a>`)</script>
+                    <script>document.write(getStorage("user").role == "Manufacturer" ? getStorage("lang")=='1'?`<a class="nav-link" href="manuproduct.html">उत्पाद जोड़ें <span class="sr-only">(current)</span></a>`:`<a class="nav-link" href="manuproduct.html">Add Products <span class="sr-only">(current)</span></a>` : getStorage("lang")=='1'?`<a class="nav-link" href="sold.html">उत्पाद बेचना हैं <span class="sr-only">(current)</span></a>`:`<a class="nav-link" href="sold.html">Sell Product <span class="sr-only">(current)</span></a>`)</script>
                 </li>
                 <li class="nav-item active">
-                    <a class="nav-link" href="alltx.html">All Transaction</a>
+                    <a class="nav-link" href="alltx.html"><script>
+                        document.write(getStorage("lang")=='1'?"सभी लेन-देन":"All Transactions")
+                        
+                            </script></a>
                 </li>
                 <li class="nav-item active">
-                    <a class="nav-link" href="viewRebate.html">Rebate</a>
+                    <a class="nav-link" href="viewRebate.html"><script>
+                        document.write(getStorage("lang")=='1'?"छूट":"Rebate")
+                        
+                            </script></a>
                 </li>
             </ul>
         </div>
-        <a style=" color: white;" onclick="logout()" target="_blank">Logout</a>
+        <a style=" color: white;" target="_blank"><button class="btn btn-secondary"  onclick="language()"><script>
+            document.write(getStorage("lang")=='1'?"English":"Hindi")
+            
+                </script></button>
+          </a>&nbsp;&nbsp;&nbsp;
+        <a style=" color: white;" onclick="logout()" target="_blank"><script>
+            document.write(getStorage("lang")=='1'?"लॉग आउट":"Logout")
+            
+                </script></a>
 
     </nav>
+
     <div class="container">
         <center>
             <h1>
-                <script>document.write(localStorage.getItem("Lang") == 1 ? "उत्पाद जोड़ें" : "ADD PRODUCT")</script>
+                <script>document.write(getStorage("lang") == 1 ? "उत्पाद जोड़ें" : "ADD PRODUCT")</script>
             </h1>
         </center>
         <br />
@@ -50,22 +74,22 @@
         <div class="d-flex justify-content-center">
             <div class="shadow p-3 mb-5 bg-white rounded" style="width:500px;">
                 <div class="form-group">
-                    <label for="inputAddress" style="font-size:20px;">Product</label>
+                    <label for="inputAddress" style="font-size:20px;"><script>document.write(getStorage("lang") == "1" ? "उत्पाद" : "Product")</script></label>
                     <input type="text" class="form-control" id="pname" readonly>
                 </div>
                 <div class="form-group">
-                    <label for="inputAddress" style="font-size:20px;">GST</label>
+                    <label for="inputAddress" style="font-size:20px;"><script>document.write(getStorage("lang") == "1" ? "जीएसटी" : "GST")</script></label>
                     <input type="text" class="form-control" id="gst" readonly>
                 </div>
                 <div class="form-group">
-                    <label for="inputAddress" style="font-size:20px;">Buyer</label>
+                    <label for="inputAddress" style="font-size:20px;"><script>document.write(getStorage("lang") == "1" ? "क्रेता" : "Buyer")</script></label>
                     <input type="text" class="form-control" id="to" placeholder="GST no.">
                 </div>
                 <div class="form-group">
-                    <label for="inputAddress" style="font-size:20px;">Selling Price Rate</label>
+                    <label for="inputAddress" style="font-size:20px;"><script>document.write(getStorage("lang") == "1"? "विक्रय दर" : "Selling Price Rate")</script></label>
                     <input type="number" class="form-control" id="sprice" placeholder="Enter address of buyer">
                 </div>
-                 <center><button onclick="genrate()" class="btn btn-danger">Generate Invoice</button></center>
+                 <center><button onclick="genrate()" class="btn btn-danger"><script>document.write(getStorage("lang") == "1" ? "चालान जनरेट करें" : "Generate Invoice")</script></button></center>
 
             </div>
             <div id="display"></div>
