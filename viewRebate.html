@@ -52,9 +52,12 @@
                             <th scope="col">#</th>
                             <th scope="col">GST%</th>
                             <th scope="col">Product Name</th>
-                            <th scope="col">Selling Price</th>
+                            <th scope="col">Selling Price Rate</th>
+                            <th scope="col">Quantity</th>
                             <th scope="col">IGST</th>
+                            <th scope="col">Rebate/quantity</th>
                             <th scope="col">Rebate</th>
+
                         </tr>
                     </thead>
                     <tbody id="display">
@@ -100,7 +103,8 @@
                 console.log(res)
 
                 if (res.data.success) {
-                    reb = 0
+                    reb1 = 0
+                    reb2 = 0
                     document.getElementById("display").innerHTML = ""
                     res.data.data.map((d, i) => {
                         document.getElementById("display").innerHTML += `
@@ -109,19 +113,28 @@
       <td>${d.productId.gst}%</td>
       <td>${d.productId.name}</td>
       <td>${d.sprice}</td>
+      <td>${d.productId.quantity}</td>
       <td>${d.total - d.sprice}</td>
       <td>${d.rebate}</td>
+      <td>${d.rebate*d.productId.quantity}</td>
     </tr>
                         `
-                        reb += d.rebate
+                        reb1 += d.rebate*d.productId.quantity
+                        reb2 += d.rebate
+
+                        
                     })
                     document.getElementById("display").innerHTML += `
                     <tr>
       <th scope="row"></th>
       <td></td>
       <td></td>
+      <td></td>
+      <td></td>
+
       <td>Total</td>
-      <td>${reb}</td>
+      <td>${reb2}</td>
+      <td>${reb1}</td>
     </tr>`
                 }
 

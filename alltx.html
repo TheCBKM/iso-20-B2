@@ -51,7 +51,7 @@
 
         </div>
         <div class="d-flex justify-content-center">
-            <div class="shadow p-3 mb-5 bg-white rounded" style="width:500px;">
+            <div class="shadow p-3 mb-5 bg-white rounded" >
 
                 <table class="table">
                     <thead>
@@ -60,7 +60,8 @@
                             <th scope="col">Product</th>
                             <th scope="col">From</th>
                             <th scope="col">To</th>
-                            <th scope="col">Amount</th>
+                            <th scope="col">Amount/unit</th>
+                            <th scope="col">Quantity</th>
                             <td>Track</td>
 
                         </tr>
@@ -122,7 +123,7 @@
       <td>${d.from.name}</td>
       <td>${d.to.name}</td>
       <td>${d.total}</td>
-
+      <td>${d.productId.quantity}</td>
       <td><button class="btn btn-dark" onclick="track('${d.productId._id}')">Track</button></td>
     </tr>`
                     })

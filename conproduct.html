@@ -10,6 +10,7 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <link rel="stylesheet" href="load.css" />
 
     <title></title>
 </head>
@@ -61,12 +62,13 @@
                     <input type="text" class="form-control" id="to" placeholder="GST no.">
                 </div>
                 <div class="form-group">
-                    <label for="inputAddress" style="font-size:20px;">Selling Price</label>
+                    <label for="inputAddress" style="font-size:20px;">Selling Price Rate</label>
                     <input type="number" class="form-control" id="sprice" placeholder="Enter address of buyer">
                 </div>
-                <di <center><button onclick="genrate()" class="btn btn-danger">Generate Invoice</button></center>
+                 <center><button onclick="genrate()" class="btn btn-danger">Generate Invoice</button></center>
 
             </div>
+            <div id="display"></div>
         </div>
     </div>
     <br />
@@ -103,6 +105,7 @@
             logout()
         }
         function genrate() {
+            document.getElementById("display").innerHTML = `<center><div class="lds-hourglass"></div></center>`
             sprice = document.getElementById("sprice").value
             to = document.getElementById("to").value
             from = getStorage('user')._id

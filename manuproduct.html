@@ -57,15 +57,11 @@
           <input type="text" class="form-control" id="to" placeholder="ID">
         </div>
         <div class="form-group">
-          <label for="inputAddress" style="font-size:20px;">Selling Price</label>
-          <input type="number" class="form-control" id="sprice" placeholder="Enter address of buyer">
-        </div>
-        <div class="form-group">
-          <label for="inputAddress" style="font-size:20px;">Raw Material Price</label>
+          <label for="inputAddress" style="font-size:20px;">Cost Price</label>
           <input type="number" class="form-control" id="cprice" placeholder="Enter address of buyer">
         </div>
         <div class="form-group ">
-          <label for="inputState" style="font-size:20px;">Rate</label>
+          <label for="inputState" style="font-size:20px;">GST</label>
           <select id="gst" class="form-control">
             <option selected>Choose</option>
             <option value="0">Nil</option>
@@ -76,8 +72,16 @@
           </select>
         </div>
         <div class="form-group">
-          <label for="inputAddress" style="font-size:20px;">Product Name:</label>
-          <input type="text" class="form-control" id="pname" placeholder="Product Name">
+          <label for="inputAddress" style="font-size:20px;">Quantity:</label>
+          <input type="number" class="form-control" onkeyup="quan()" id="quantity" placeholder="Product Name">
+        </div>
+        <div class="form-group">
+          <label for="inputAddress" style="font-size:20px;">Rate:</label>
+          <input type="rate" class="form-control" id="rate" onkeyup="quan()" placeholder="Product Name">
+        </div>
+        <div class="form-group">
+          <label for="inputAddress" style="font-size:20px;">Selling Price</label>
+          <input type="number" class="form-control" id="sprice" placeholder="Enter address of buyer">
         </div>
         <div class="form-group">
           <label for="inputAddress" style="font-size:20px;">HSN/SAC Number:</label>
@@ -129,16 +133,18 @@
         gst,
         hsn,
         cprice,
-        sprice,
+        sprice: Number(document.getElementById('rate').value),
         to,
-        from
+        from,
+        quantity:document.getElementById("quantity").value  
+
       }
       console.log(data)
       axios.post(`${url}transaction/save/manu`, data)
         .then(res => {
           console.log(res)
           if (res.data.success) {
-            alert("done")
+            window.open(`https://isogst.herokuapp.com/static/${res.data.data}`, '_blank')
           }
           else
             alert("err try again")
@@ -150,6 +156,9 @@
         })
 
 
+    }
+    function quan() {
+      document.getElementById('sprice').value = Number(document.getElementById('rate').value) * Number(document.getElementById('quantity').value)
     }
   </script>
 </body>
