@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <script src="util.js"></script>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+  <title></title>
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-lg navbar-light justify-content-between" style="background-color: black;">
+    <a class=" navbar-brand" href="#" style="color:white;">GTST<br>
+      <!-- <div style="font-size: small;">OOAD</div> -->
+    </a>
+    <a style=" color: white;" href="https://www.cbkm.in/" target="_blank">Logout</a>
+  </nav>
+  <div class="container">
+    <center>
+      <h1>
+        <script>document.write(localStorage.getItem("Lang") == 1 ? "उत्पाद जोड़ें" : "ADD PRODUCT")</script>
+      </h1>
+    </center>
+    <br />
+    <br />
+    <div class="d-flex justify-content-center">
+      <div class="shadow p-3 mb-5 bg-white rounded" style="width:500px;">
+        <div class="form-group">
+          <label for="inputAddress" style="font-size:20px;">Name</label>
+          <input type="text" class="form-control" id="name" placeholder="Name of Product">
+        </div>
+        <div class="form-group">
+          <label for="inputAddress" style="font-size:20px;">Buyer</label>
+          <input type="text" class="form-control" id="to" placeholder="ID">
+        </div>
+        <div class="form-group">
+          <label for="inputAddress" style="font-size:20px;">Selling Price</label>
+          <input type="number" class="form-control" id="sprice" placeholder="Enter address of buyer">
+        </div>
+        <div class="form-group">
+          <label for="inputAddress" style="font-size:20px;">Raw Material Price</label>
+          <input type="number" class="form-control" id="cprice" placeholder="Enter address of buyer">
+        </div>
+        <div class="form-group ">
+          <label for="inputState" style="font-size:20px;">Rate</label>
+          <select id="gst" class="form-control">
+            <option selected>Choose</option>
+            <option value="0">Nil</option>
+            <option value="5">5 %</option>
+            <option value="12">12 %</option>
+            <option value="15">15 %</option>
+            <option value="28">28 %</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="inputAddress" style="font-size:20px;">Product Name:</label>
+          <input type="text" class="form-control" id="pname" placeholder="Product Name">
+        </div>
+        <div class="form-group">
+          <label for="inputAddress" style="font-size:20px;">HSN/SAC Number:</label>
+          <input type="text" class="form-control" id="hsn" placeholder="hsn no.">
+        </div>
+
+        <center><button onclick="genrate()" class="btn btn-danger">Generate Invoice</button></center>
+
+      </div>
+    </div>
+  </div>
+  <br />
+  <br />
+  <footer class="fixed-bottom" style="background-color:black;">
+    <!-- Copyright -->
+    <div class="footer-copyright text-center py-3">
+      <a href=""> GST by CBKM</a>
+    </div>
+    <!-- Copyright -->
+
+  </footer>
+
+  <!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+    integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+    integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+    crossorigin="anonymous"></script>
+
+  <script>
+    function genrate() {
+      name = document.getElementById("name").value
+      gst = document.getElementById("gst").value
+      hsn = document.getElementById("hsn").value
+      cprice = document.getElementById("cprice").value
+      sprice = document.getElementById("sprice").value
+      to = document.getElementById("to").value
+      from = getStorage('user')._id
+      data = {
+        name,
+        gst,
+        hsn,
+        cprice,
+        sprice,
+        to,
+        from
+      }
+      console.log(data)
+      axios.post(`${url}transaction/save/manu`, data)
+        .then(res => {
+          console.log(res)
+          if (res.data.success) {
+            alert("done")
+          }
+          else
+            alert("err try again")
+
+        })
+        .catch(e => {
+          console.log(e)
+          alert("err try again")
+        })
+
+
+    }
+  </script>
+</body>
+
+</html>
