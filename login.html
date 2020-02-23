@@ -10,7 +10,10 @@
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
     integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
-  <title></title>
+  <title>Login</title>
+  <link rel="stylesheet" href="load.css" />
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="util.js"></script>
 </head>
 
 <body>
@@ -18,9 +21,7 @@
     <a class=" navbar-brand" href="#" style="color:white;">GTST<br>
       <!-- <div style="font-size: small;">OOAD</div> -->
     </a>
-    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-    <script src="util.js"></script>
-    <a style=" color: white;" href="https://www.cbkm.in/" target="_blank">Logout</a>
+    
   </nav>
   <div class="container">
     <center>
@@ -39,9 +40,10 @@
           <label for="inputPassword4" style="font-size:20px;">Password</label>
           <input type="password" class="form-control" id="inputPassword" placeholder="Enter password">
         </div>
-        <center><button onclick="login()" class="btn btn-danger">Log In</button></center>
-
+        <center><button onclick="login()" class="btn btn-danger">Login</button></center>
+        <div id="load"></div>
         <center><b><a href="signup.html">REGISTER >></a></b></center>
+
       </div>
     </div>
   </div>
@@ -53,8 +55,10 @@
     </div>
     <!-- Copyright -->
     <script>
+     
       function login() {
-        alert('login')
+        document.getElementById("load").innerHTML = `<center><div class="lds-hourglass"></div></center>`
+        // alert('login')
         gstno = document.getElementById('gst').value
         pass = document.getElementById('inputPassword').value
         data = {

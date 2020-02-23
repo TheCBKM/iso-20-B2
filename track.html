@@ -15,11 +15,28 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light justify-content-between" style="background-color: black;">
-        <a class=" navbar-brand" href="#" style="color:white;">GTST<br>
-            <!-- <div style="font-size: small;">OOAD</div> -->
-        </a>
-        <a style=" color: white;" href="https://www.cbkm.in/" target="_blank">Logout</a>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">
+            <script>document.write(getStorage("user").name)</script></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item active">
+                    <script>document.write(getStorage("user").role == "Manufacturer" ? `<a class="nav-link" href="manuproduct.html">Add Product <span class="sr-only">(current)</span></a>` : `<a class="nav-link" href="sold.html">Sell Product <span class="sr-only">(current)</span></a>`)</script>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="alltx.html">All Transaction</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="viewRebate.html">Rebate</a>
+                </li>
+            </ul>
+        </div>
+        <a style=" color: white;" onclick="logout()" target="_blank">Logout</a>
+
     </nav>
     <div class="container">
         <center>
@@ -80,9 +97,11 @@
         crossorigin="anonymous"></script>
 
     <script>
+        if(!getStorage("user")){
+    logout()
+}
         axios.post(`${url}product/tracking`, {
-            // from: getStorage("user")._id
-            _id: "5e51e56dc7f58c4e566c1037"
+            _id: getStorage("trackid")
         })
             .then(res => {
                 console.log(res)
