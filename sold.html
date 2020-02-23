@@ -11,10 +11,10 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
-    <title></title>
+    <title>Sold</title>
 </head>
 
-<body>
+<body onload="start()">
     <nav class="navbar navbar-expand-lg navbar-light justify-content-between" style="background-color: black;">
         <a class=" navbar-brand" href="#" style="color:white;">GTST<br>
             <!-- <div style="font-size: small;">OOAD</div> -->
@@ -23,20 +23,31 @@
     </nav>
     <div class="container">
         <center>
-            <h1>Total Rebate</h1>
+            <h1>Sold</h1>
         </center>
         <br />
         <br />
         <div class="d-flex justify-content-center">
+
+            <div class="shadow p-0 mb-0 bg-white rounded" style="width:500px;">
+
+                <center>
+                    <h4 id="sold"> </h4>
+                </center>
+            </div>
+        </div>
+        <div class="d-flex justify-content-center">
             <div class="shadow p-3 mb-5 bg-white rounded" style="width:500px;">
+
                 <table class="table">
                     <thead>
                         <tr>
                             <th scope="col">#</th>
-                            <th scope="col">GST%</th>
-                            <th scope="col">Product Name</th>
-                            <th scope="col">Selling Price</th>
-                            <th scope="col">Rebate</th>
+                            <th scope="col">Product</th>
+                            <th scope="col">IGST</th>
+                            <th scope="col">Total Price</th>
+                            <th scope="col">Sell</th>
+                            <th scope="col">Track</th>
                         </tr>
                     </thead>
                     <tbody id="display">
@@ -71,43 +82,49 @@
         crossorigin="anonymous"></script>
 
     <script>
-        axios.post(`${url}user/rebate`, {
-            from: getStorage("user")._id
-            // from: "5e51ce4d6b26413f986d411c"
-        })
-            .then(res => {
-                console.log(res)
-
-                if (res.data.success) {
-                    reb=0
-                    document.getElementById("display").innerHTML = ""
-                    res.data.data.map((d, i) => {
-                        document.getElementById("display").innerHTML += `
+        function start() {
+            userid = getStorage('user')._id
+            axios.post(`${url}transaction/get`, {
+                "to": userid,
+                "sold": false
+            })
+                .then(res => {
+                    console.log(res.data)
+                    if (res.data.success) {
+                        res.data.data.map((d, i) => {
+                            document.getElementById("display").innerHTML += `
                         <tr>
       <th scope="row">${i + 1}</th>
-      <td>${d.productId.gst}%</td>
       <td>${d.productId.name}</td>
-      <td>${d.sprice}</td>
-      <td>${d.rebate}</td>
+      <td>${d.productId.gst} %</td>
+      <td>${d.total}</td>
+      <td><button class="btn btn-danger" onclick=sell('${d.productId._id}')>Sell</button></td>
+      <td><button class="btn btn-dark">Track</button></td>
     </tr>
                         `
-                        reb+=d.rebate
-                    })
-                    document.getElementById("display").innerHTML+=`
-                    <tr>
-      <th scope="row"></th>
-      <td></td>
-      <td></td>
-      <td>Total</td>
-      <td>${reb}</td>
-    </tr>`
-                }
+                        })
 
+                    }
+
+                })
+                .catch(e => {
+                    console.log(e)
+                    alert("err try again")
+                })
+        }
+
+        function sell(pid) {
+            axios.post(`${url}product/get`, {
+                _id: pid
             })
-            .catch(e => {
-                console.log(e)
-                alert("err try again")
-            })
+                .then(res => {
+                    setStorage("product", res.data.data[0])
+                    window.location.href = 'conproduct.html'
+                })
+                .catch(e => {
+                    console.log(e)
+                })
+        }
     </script>
 </body>
 

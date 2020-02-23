@@ -100,12 +100,17 @@
       console.log(data)
       axios.post(`${url}user/save`, data)
         .then(res => {
-          console.log(res)
+          console.log(res.data.data)
           if (res.data.success) {
             setStorage("user", res.data.data)
+            if (res.data.data.role == 'Manufacturer') {
+              window.location.href = 'manuproduct.html'
+            } else {
+              window.location.href = 'sold.html'
+            }
           }
           else
-          alert("err try again")
+            alert("err try again")
 
         })
         .catch(e => {

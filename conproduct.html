@@ -14,7 +14,7 @@
     <title></title>
 </head>
 
-<body>
+<body onload="start()">
     <nav class="navbar navbar-expand-lg navbar-light justify-content-between" style="background-color: black;">
         <a class=" navbar-brand" href="#" style="color:white;">GTST<br>
             <!-- <div style="font-size: small;">OOAD</div> -->
@@ -31,10 +31,17 @@
         <br />
         <div class="d-flex justify-content-center">
             <div class="shadow p-3 mb-5 bg-white rounded" style="width:500px;">
-
+                <div class="form-group">
+                    <label for="inputAddress" style="font-size:20px;">Product</label>
+                    <input type="text" class="form-control" id="pname" readonly>
+                </div>
+                <div class="form-group">
+                    <label for="inputAddress" style="font-size:20px;">GST</label>
+                    <input type="text" class="form-control" id="gst" readonly>
+                </div>
                 <div class="form-group">
                     <label for="inputAddress" style="font-size:20px;">Buyer</label>
-                    <input type="text" class="form-control" id="to" placeholder="ID">
+                    <input type="text" class="form-control" id="to" placeholder="GST no.">
                 </div>
                 <div class="form-group">
                     <label for="inputAddress" style="font-size:20px;">Selling Price</label>
@@ -47,6 +54,12 @@
     </div>
     <br />
     <br />
+    <script>
+        function start(){
+            document.getElementById('gst').value = `${getStorage('product').gst} %`
+            document.getElementById('pname').value = `${getStorage('product').name}`
+        }
+    </script>
     <footer class="fixed-bottom" style="background-color:black;">
         <!-- Copyright -->
         <div class="footer-copyright text-center py-3">
@@ -70,7 +83,6 @@
 
     <script>
         function genrate() {
-            name = document.getElementById("name").value
             sprice = document.getElementById("sprice").value
             to = document.getElementById("to").value
             from = getStorage('user')._id
