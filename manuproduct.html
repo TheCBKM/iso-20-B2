@@ -13,9 +13,9 @@
 
   <title></title>
   <script>
-    function language(){
-      setStorage("lang",(
-        getStorage("lang")=='1'?"0":"1"
+    function language() {
+      setStorage("lang", (
+        getStorage("lang") == '1' ? "0" : "1"
       ))
       location.reload(true)
     }
@@ -25,42 +25,46 @@
 <body>
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <a class="navbar-brand" href="#">
-        <script>document.write(getStorage("user").name)</script></a>
+      <script>document.write(getStorage("user").name)</script></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
+      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav">
-            <li class="nav-item active">
-                <script>document.write(getStorage("user").role == "Manufacturer" ? getStorage("lang")=='1'?`<a class="nav-link" href="manuproduct.html">उत्पाद जोड़ें <span class="sr-only">(current)</span></a>`:`<a class="nav-link" href="manuproduct.html">Add Products <span class="sr-only">(current)</span></a>` : getStorage("lang")=='1'?`<a class="nav-link" href="sold.html">उत्पाद बेचना हैं <span class="sr-only">(current)</span></a>`:`<a class="nav-link" href="sold.html">Sell Product <span class="sr-only">(current)</span></a>`)</script>
-            </li>
-            <li class="nav-item active">
-                <a class="nav-link" href="alltx.html"><script>
-                    document.write(getStorage("lang")=='1'?"सभी लेन-देन":"All Transactions")
-                    
-                        </script></a>
-            </li>
-            <li class="nav-item active">
-                <a class="nav-link" href="viewRebate.html"><script>
-                    document.write(getStorage("lang")=='1'?"छूट":"Rebate")
-                    
-                        </script></a>
-            </li>
-        </ul>
-    </div>
-    <a style=" color: white;" target="_blank"><button class="btn btn-secondary"  onclick="language()"><script>
-        document.write(getStorage("lang")=='1'?"English":"Hindi")
-        
-            </script></button>
-      </a>
-      &nbsp;&nbsp;&nbsp;
-    <a style=" color: white;" onclick="logout()" target="_blank"><script>
-        document.write(getStorage("lang")=='1'?"लॉग आउट":"Logout")
-        
-            </script></a>
+      <ul class="navbar-nav">
+        <li class="nav-item active">
+          <script>document.write(getStorage("user").role == "Manufacturer" ? getStorage("lang") == '1' ? `<a class="nav-link" href="manuproduct.html">उत्पाद जोड़ें <span class="sr-only">(current)</span></a>` : `<a class="nav-link" href="manuproduct.html">Add Products <span class="sr-only">(current)</span></a>` : getStorage("lang") == '1' ? `<a class="nav-link" href="sold.html">उत्पाद बेचना हैं <span class="sr-only">(current)</span></a>` : `<a class="nav-link" href="sold.html">Sell Product <span class="sr-only">(current)</span></a>`)</script>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="alltx.html">
+            <script>
+              document.write(getStorage("lang") == '1' ? "सभी लेन-देन" : "All Transactions")
 
-</nav>
+            </script></a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="viewRebate.html">
+            <script>
+              document.write(getStorage("lang") == '1' ? "छूट" : "Rebate")
+
+            </script></a>
+        </li>
+      </ul>
+    </div>
+    <a style=" color: white;" target="_blank"><button class="btn btn-secondary" onclick="language()">
+        <script>
+          document.write(getStorage("lang") == '1' ? "English" : "Hindi")
+
+        </script></button>
+    </a>
+    &nbsp;&nbsp;&nbsp;
+    <a style=" color: white;" onclick="logout()" target="_blank">
+      <script>
+        document.write(getStorage("lang") == '1' ? "लॉग आउट" : "Logout")
+
+      </script></a>
+
+  </nav>
 
   <div class="container">
     <center>
@@ -73,36 +77,48 @@
     <div class="d-flex justify-content-center">
       <div class="shadow p-3 mb-5 bg-white rounded" style="width:500px;">
         <div class="form-group">
-          <label for="inputAddress" style="font-size:20px;"><script>
-            document.write(getStorage("lang")=='1'?"नाम":"Name")
-            
-                </script></label>
+          <label for="inputAddress" style="font-size:20px;">
+            <script>
+              document.write(getStorage("lang") == '1' ? "नाम" : "Name")
+
+            </script></label>
           <input type="text" class="form-control" id="name" placeholder="Name of Product">
         </div>
         <div class="form-group">
-          <label for="inputAddress" style="font-size:20px;"><script>
-            document.write(getStorage("lang")=='1'?"क्रेता":"Buyer")
-            
-                </script></label>
+          <label for="inputAddress" style="font-size:20px;">
+            <script>
+              document.write(getStorage("lang") == '1' ? "क्रेता" : "Buyer")
+
+            </script></label>
           <input type="text" class="form-control" id="to" placeholder="ID">
         </div>
         <div class="form-group">
-          <label for="inputAddress" style="font-size:20px;"><script>
-            document.write(getStorage("lang")=='1'?"लागत मूल्य":"Cost Price")
-            
-                </script></label>
+          <label for="inputAddress" style="font-size:20px;">
+            <script>
+              document.write(getStorage("lang") == '1' ? "लागत मूल्य" : "Cost Price")
+
+            </script></label>
           <input type="number" class="form-control" id="cprice" placeholder="Enter address of buyer">
         </div>
         <div class="form-group ">
-          <label for="inputState" style="font-size:20px;"><script>
-            document.write(getStorage("lang")=='1'?"जीएसटी":"GST")
-            
-                </script></label>
+
+          <label for="inputState" style="font-size:20px;">
+            <a href="gstprices.html" target="_blank">
+              <script>
+                document.write(getStorage("lang") == '1' ? "पता नहीं, इसे खोजें?" : "Don't Know, Search it ?")
+
+              </script> </a> <br>
+            <script>
+              document.write(getStorage("lang") == '1' ? "जीएसटी" : "GST")
+
+            </script></label>
           <select id="gst" class="form-control">
-            <option selected><script>
-              document.write(getStorage("lang")=='1'?"चुनें:":"Choose")
-              
-                  </script></option>
+            <option selected>
+              <script>
+                document.write(getStorage("lang") == '1' ? "चुनें:" : "Choose")
+
+              </script>
+            </option>
             <option value="0">Nil</option>
             <option value="5">5 %</option>
             <option value="12">12 %</option>
@@ -111,42 +127,44 @@
           </select>
         </div>
         <div class="form-group">
-          <label for="inputAddress" style="font-size:20px;"><script>
-            document.write(getStorage("lang")=='1'?"मात्रा:":"Quantity:")
-            
-                </script></label>
+          <label for="inputAddress" style="font-size:20px;">
+            <script>
+              document.write(getStorage("lang") == '1' ? "मात्रा:" : "Quantity:")
+
+            </script></label>
           <input type="number" class="form-control" onkeyup="quan()" id="quantity" placeholder="Product Name">
         </div>
         <div class="form-group">
-          <a href="gstprices.html" target="_blank"><script>
-            document.write(getStorage("lang")=='1'?"पता नहीं, इसे खोजें?":"Don't Know, Search it ?")
-            
-                </script> </a> <br>
-          <label for="inputAddress" style="font-size:20px;"><script>
-            document.write(getStorage("lang")=='1'?"मूल्यांकन करें:":"Rate:")
-            
-                </script></label>
+
+          <label for="inputAddress" style="font-size:20px;">
+            <script>
+              document.write(getStorage("lang") == '1' ? "मूल्यांकन करें:" : "Rate:")
+
+            </script></label>
           <input type="rate" class="form-control" id="rate" onkeyup="quan()" placeholder="Product Name">
         </div>
         <div class="form-group">
-          <label for="inputAddress" style="font-size:20px;"><script>
-            document.write(getStorage("lang")=='1'?"विक्रय मूल्य":"Selling Price")
-            
-                </script></label>
+          <label for="inputAddress" style="font-size:20px;">
+            <script>
+              document.write(getStorage("lang") == '1' ? "विक्रय मूल्य" : "Selling Price")
+
+            </script></label>
           <input type="number" class="form-control" id="sprice" placeholder="Enter address of buyer">
         </div>
         <div class="form-group">
-          <label for="inputAddress" style="font-size:20px;"><script>
-            document.write(getStorage("lang")=='1'?"HSN / SAC संख्या:":"HSN/SAC Number:")
-            
-                </script></label>
+          <label for="inputAddress" style="font-size:20px;">
+            <script>
+              document.write(getStorage("lang") == '1' ? "HSN / SAC संख्या:" : "HSN/SAC Number:")
+
+            </script></label>
           <input type="text" class="form-control" id="hsn" placeholder="hsn no.">
         </div>
 
-        <center><button onclick="genrate()" class="btn btn-danger"><script>
-          document.write(getStorage("lang")=='1'?"चालान जनरेट करें":"Generate Invoice")
-          
-              </script></button></center>
+        <center><button onclick="genrate()" class="btn btn-danger">
+            <script>
+              document.write(getStorage("lang") == '1' ? "चालान जनरेट करें" : "Generate Invoice")
+
+            </script></button></center>
 
       </div>
     </div>
@@ -194,7 +212,7 @@
         sprice: Number(document.getElementById('rate').value),
         to,
         from,
-        quantity:document.getElementById("quantity").value  
+        quantity: document.getElementById("quantity").value
 
       }
       console.log(data)
