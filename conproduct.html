@@ -145,6 +145,7 @@
                     console.log(res)
                     if (res.data.success) {
                         window.open(`https://isogst.herokuapp.com/static/${res.data.data}`, '_blank')
+                        window.location.href='alltx.html'
                     }
                     else
                         alert("err try again")
